@@ -15,9 +15,41 @@ package lpp.disruptor.demo;
 import java.io.Serializable;
 
 /**
- * 功能描述：消息
+ * 功能描述：消息实体
  */
 public class Message implements Serializable {
     private static final long serialVersionUID = 6430085369948672161L;
+    private Long msgId = null;
     private Byte cmd = null;
+    private String content = null;
+
+    public Long getMsgId() {
+        return msgId;
+    }
+
+    public void setMsgId(Long msgId) {
+        this.msgId = msgId;
+    }
+
+    public Byte getCmd() {
+        return cmd;
+    }
+
+    public void setCmd(Byte cmd) {
+        this.cmd = cmd;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+    
+    @Override
+    public String toString() {
+         return "[msgId="+msgId+", cmd="+cmd+", content="+content+"]";
+    }
+
 }
