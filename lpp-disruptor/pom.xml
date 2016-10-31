@@ -1,0 +1,20 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.pandan</groupId>
+		<artifactId>lpp-maven-parent</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<artifactId>lpp-disruptor</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>disruptor性能测试demo</name>
+	<description>高性能并发框架disruptor性能测试</description>
+	<dependencies>
+		<dependency>
+			<groupId>com.lmax</groupId>
+			<artifactId>disruptor</artifactId>
+			<version>3.3.6</version>
+		</dependency>
+	</dependencies>
+</project>
