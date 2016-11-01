@@ -30,21 +30,22 @@ import lpp.disruptor.comm.EventPublisher;
 public class DisruptorPublisher implements EventPublisher {
     private static final WaitStrategy YIELDING_WAIT = new YieldingWaitStrategy();
     private Disruptor<MessageEvent> disruptor = null;
-    private RingBuffer<MessageEvent> ringbuffer = null;    
+    private RingBuffer<MessageEvent> ringbuffer = null;
     private EventHandler<MessageEvent> handler = null;
-    
+
     public DisruptorPublisher(int bufferSize) {
         handler = new MessageEventHandler();
         disruptor = new Disruptor<MessageEvent>(MessageEvent.EVENT_FACTORY, bufferSize, new ThreadFactory() {
-            private  final AtomicLong THREAD_NUM = new AtomicLong(0);
+            private final AtomicLong THREAD_NUM = new AtomicLong(0);
+
             @Override
             public Thread newThread(Runnable r) {
                 Thread thread = new Thread(Thread.currentThread().getThreadGroup(), r);
-                thread.setName("Disruptor-Handle-Thread-"+THREAD_NUM.getAndIncrement());
+                thread.setName("Disruptor-Handle-Thread-" + THREAD_NUM.getAndIncrement());
                 thread.setDaemon(false);
                 return thread;
             }
-        },  ProducerType.SINGLE, YIELDING_WAIT);
+        }, ProducerType.SINGLE, YIELDING_WAIT);
     }
 
     @SuppressWarnings("unchecked")
